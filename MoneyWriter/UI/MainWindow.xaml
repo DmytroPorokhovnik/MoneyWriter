@@ -4,9 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI"
+        xmlns:resources="clr-namespace:Resources;assembly=Resources"
+        xmlns:viewModels="clr-namespace:UI.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel, IsDesignTimeCreatable=True}">
     <Grid>
-
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Width="300" Height="100">
+                <Label Margin="3" Content="{x:Static resources:MainWindowStrings.EnterMoney}"/>
+                <TextBox Width="100" Margin="3" Text="{Binding MoneyInput}"/>
+                <Button MaxWidth="50" Margin="3" Content="{x:Static resources:MainWindowStrings.Convert}"
+                        Command="{Binding ConvertMoneyInputCommand}"/>
+            </StackPanel>
+            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="{Binding ConvertedValue}"/>
+            </WrapPanel>
+        </StackPanel>
     </Grid>
 </Window>
